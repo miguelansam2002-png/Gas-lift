@@ -3,8 +3,12 @@ name: Compilar GasLift NABEP APK
 on:
   workflow_dispatch:
   push:
+    branches: [main]
     paths:
-      - 'GasLift_NABEP_Proyecto_Android_PUBLICO.zip'
+      - 'app/**'
+      - 'build.gradle'
+      - 'settings.gradle'
+      - 'gradle.properties'
       - '.github/workflows/gaslift-apk.yml'
 
 permissions:
@@ -14,13 +18,8 @@ jobs:
   generar-apk:
     runs-on: ubuntu-latest
     steps:
-      - name: Descargar proyecto
+      - name: Obtener codigo
         uses: actions/checkout@v4
-
-      - name: Verificar paquete publico sin base de pozos
-        run: |
-          test -s GasLift_NABEP_Proyecto_Android_PUBLICO.zip
-          unzip -p GasLift_NABEP_Proyecto_Android_PUBLICO.zip GasLift_NABEP_Android/app/src/main/assets/index.html | grep -F 'const BASE=[];'
 
       - name: Java 17
         uses: actions/setup-java@v4
@@ -28,30 +27,42 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Preparar SDK Android
+      - name: Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Instalar SDK Android 35
+      - name: Instalar SDK
         run: sdkmanager --install 'platforms;android-35' 'build-tools;35.0.0'
 
-      - name: Extraer proyecto
-        run: |
-          mkdir -p /tmp/gaslift
-          unzip -q GasLift_NABEP_Proyecto_Android_PUBLICO.zip -d /tmp/gaslift
-          test -f /tmp/gaslift/GasLift_NABEP_Android/app/build.gradle
-          test -f /tmp/gaslift/GasLift_NABEP_Android/gradlew
+      - name: Gradle 8.9
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
 
-      - name: Compilar APK de prueba
-        working-directory: /tmp/gaslift/GasLift_NABEP_Android
+      - name: Generar icono real de NABEP desde HTML integrado
         run: |
-          chmod +x ./gradlew
-          ./gradlew --no-daemon assembleDebug
-          test -s app/build/outputs/apk/debug/app-debug.apk
+          python3 - <<'PY'
+          import re,base64,pathlib
+          html=pathlib.Path('app/src/main/assets/index.html').read_text(encoding='utf-8')
+          match=re.search(r'<img[^>]*class=["\x27]brand-logo["\x27][^>]*src=["\x27]data:image/png;base64,([A-Za-z0-9+/=]+)',html)
+          if not match:
+              raise RuntimeError('No se encontro logo NABEP en la aplicacion')
+          data=base64.b64decode(match.group(1))
+          out=pathlib.Path('app/src/main/res/drawable-nodpi')
+          out.mkdir(parents=True,exist_ok=True)
+          (out/'ic_launcher.png').write_bytes(data)
+          print('Icono institucional listo:',len(data),'bytes')
+          PY
 
-      - name: Guardar APK descargable
+      - name: Compilar APK
+        run: gradle --no-daemon :app:assembleDebug
+
+      - name: Comprobar APK
+        run: test -s app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Publicar APK de prueba
         uses: actions/upload-artifact@v4
         with:
           name: GasLift-NABEP-APK
-          path: /tmp/gaslift/GasLift_NABEP_Android/app/build/outputs/apk/debug/app-debug.apk
-          if-no-files-found: error
+          path: app/build/outputs/apk/debug/app-debug.apk
           retention-days: 30
+          if-no-files-found: error
