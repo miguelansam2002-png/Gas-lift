@@ -1,0 +1,1 @@
+// Android sin red: los recursos se entregan desde el APK. No se registra SW.
