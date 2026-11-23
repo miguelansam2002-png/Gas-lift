@@ -55,6 +55,47 @@
 .journey-result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.journey-result-grid>div{min-width:0}.journey-result-grid>div>small{display:block;font-size:10px;color:#5f7b91}.journey-result-grid strong{display:block;font-size:17px;margin-top:5px;color:#1a4c70}.journey-result-grid strong>small{font-size:9px;color:#6b8ca1}
 .journey-step-actions{display:flex;gap:10px;margin-top:20px}.journey-step-actions .btn{flex:1;min-height:53px}.journey-footer-actions{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:22px}
 @media(max-width:720px){.journey-metrics{gap:7px}.journey-metric{padding:12px 10px}.journey-metric strong{font-size:27px}.journey-mul{padding:13px}.journey-mul-right{min-width:75px}.journey-add .btn{width:100%}.journey-actions .btn{width:100%}.journey-well-card{padding:17px}.journey-well-head h2{font-size:26px}.journey-result-grid{grid-template-columns:1fr;gap:12px}.journey-readings input{font-size:24px}.journey-step-actions{flex-direction:column-reverse}.journey-footer-actions{font-size:11px}}
+
+/* GasLift NABEP Android: pantalla móvil optimizada */
+@media(max-width:770px){
+  body{font-size:14px}
+  .shell{display:block}
+  .sidebar{height:auto;width:100%;position:sticky;top:0;z-index:10;display:block;padding:10px 10px 8px;box-shadow:0 3px 14px #0b30421f}
+  .brand{gap:10px;padding:3px 4px 10px}
+  .brand-logo{width:42px;height:42px;border-radius:11px}
+  .brand b{font-size:16px;letter-spacing:.7px}
+  .brand small{font-size:10px}
+  .nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;padding:0}
+  .navbutton{width:100%;min-width:0;min-height:56px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;white-space:normal;line-height:1.25;gap:4px;padding:7px 3px;font-size:10px;margin:0;border-radius:9px}
+  .navico{font-size:16px;width:auto}
+  .sidebottom{display:none}
+  .top{height:auto;min-height:0;flex-wrap:wrap;align-items:flex-start;gap:8px;padding:12px 14px}
+  .top h1{font-size:17px;line-height:1.18}
+  .top small{font-size:10px;line-height:1.4;margin-top:4px}
+  .top-right{width:100%;gap:6px;justify-content:flex-start}
+  .top-right .btn{display:none}
+  .pill{font-size:10px;padding:6px 9px}
+  .content{padding:16px 12px 68px}
+  .subhead{display:block;margin-bottom:15px}
+  .subhead h2{font-size:20px;line-height:1.15}
+  .subhead p{font-size:12px;line-height:1.5}
+  .subhead .actions{display:grid;grid-template-columns:1fr;gap:8px;margin-top:12px}
+  .subhead .actions .btn{width:100%;white-space:normal}
+  .btn{min-height:44px}
+  .card{padding:15px;margin-bottom:12px;border-radius:12px}
+  .formgrid,.formgrid.two{grid-template-columns:1fr;gap:11px}
+  .wellinputs{grid-template-columns:1fr;gap:8px}
+  input,select,textarea{font-size:16px}
+  .metric{padding:14px;min-height:auto}
+  .metric strong{font-size:23px}
+  .g4{gap:9px}
+  .g-main,.g2,.g3{grid-template-columns:1fr}
+  .report-sheet{padding:18px 13px}
+  .report-metrics{grid-template-columns:1fr}
+  .report-hd{display:block}
+  .report-logo{margin-top:8px}
+  .report-preview{overflow:auto}
+}
 </style>
 </head><body>
 <div class="shell">
@@ -145,10 +186,10 @@ function measuredMultiples(){return allMultiples().filter(m=>summary(m).pairs.le
 function grandSummary(){let arr=measuredMultiples().map(m=>({m,...summary(m)}));let a=arr.reduce((s,x)=>s+x.initial,0),b=arr.reduce((s,x)=>s+x.final,0);return {arr,initial:a,final:b,reduction:a-b,percent:a>0?(a-b)/a*100:null,wellCount:arr.reduce((s,x)=>s+x.pairs.length,0)}}
 function multipleSelect(id,value){return `<select id="${id}">${allMultiples().map(m=>`<option value="${esc(m)}" ${m===value?'selected':''}>MG ${esc(m)}</option>`).join('')}</select>`}
 function metric(label,val,sub,cls=''){return `<div class="metric"><span>${label}</span><strong class="${cls}">${val}</strong><small>${sub}</small></div>`}
-function banner(){if(state.params.method==='legacy')return `<div class="alert info"><strong>Modo histórico operacional.</strong> Q = 0,590 × √(ΔP/58). Reproduce la metodología de los PDF antiguos; no corrige por presión real, composición ni geometría.</div>`;return `<div class="alert"><strong>Cálculo de ingeniería, no fiscal.</strong> Se utiliza la ecuación de placa, Cd Reader–Harris/Gallagher con iteración y factor Y₁. Z=${fmt(num(state.params.z),2)}, μ=${fmt(num(state.params.mu),3)} mPa·s y k=${fmt(num(state.params.k),2)} son valores de entrada que deben validarse; se supone que la presión del múltiple representa la presión aguas arriba de la placa. Confirmar diámetro nominal, instalación y propiedades del gas antes de operar con estos resultados.</div>`}
+function banner(){if(window.GasLiftAndroid)return '';if(state.params.method==='legacy')return `<div class="alert info"><strong>Modo de cálculo histórico.</strong> La fórmula simplificada no corrige por las condiciones actuales del gas.</div>`;return `<div class="alert info"><strong>Cálculo por placa de orificio.</strong> Para interpretar el consumo, confirma las condiciones de presión y los parámetros de placa y gas configurados.</div>`}
 function chartHTML(pairs){if(!pairs.length)return `<div class="empty">No hay pozos con dos lecturas válidas para comparar.</div>`;let mx=Math.max(.0001,...pairs.map(x=>Math.abs(x.delta)));return pairs.map(x=>{let width=Math.min(49,Math.abs(x.delta)/mx*47),left=x.delta>=0?50:50-width;return `<div class="rowbar"><span class="name">${esc(x.w.name)}</span><div class="bartrack"><i class="zeroline"></i><i class="barfill ${x.delta<0?'neg':''}" style="width:${width}%;left:${left}%"></i></div><b class="value ${x.delta<0?'tgreen':'tred'}">${signed(x.delta)}</b></div>`}).join('')}
 function dashboard(){let m=state.selected,s=summary(m),g=grandSummary(),count=allMultiples().length;return `<div class="subhead"><div><h2>Resumen operacional</h2><p>Consulta el estado del múltiple y el balance de sus ajustes registrados.</p></div><div class="actions"><button class="btn" data-action="load-sample">Cargar ejemplo MG 1-17</button><button class="btn primary" data-action="go-capture">Registrar lecturas</button></div></div>${banner()}
-<div class="card" style="margin-bottom:16px"><div class="cardhead"><h3>Instalación en teléfono</h3></div><p style="margin:0 0 8px">Puedes usar la aplicación desde el navegador o instalarla como acceso directo tipo app. Si tu navegador lo permite, pulsa <strong>Instalar app</strong>. En iPhone, usa Compartir → <strong>Añadir a pantalla de inicio</strong>.</p><div class="install-note">Para instalación completa tipo PWA, esta versión debe abrirse desde un sitio o servidor HTTPS.</div></div>
+<div class="card" style="margin-bottom:16px"><div class="cardhead"><h3>GasLift en campo</h3></div><p style="margin:0">Registra tus mediciones, trabaja con varios múltiples durante la jornada y genera el informe desde el teléfono. Los datos se guardan localmente; haz un respaldo JSON antes de cambiar de dispositivo.</p></div>
 <div class="card"><div class="formgrid"><label class="field"><span class="label">MÚLTIPLE DE GAS</span>${multipleSelect('dashMultiple',m)}</label><div class="field"><span class="label">PRESIÓN INICIAL</span><div style="padding:12px 0"><strong>${fmt(pressure(m,'initial'),0)}</strong> psig</div></div><div class="field"><span class="label">PRESIÓN FINAL</span><div style="padding:12px 0"><strong>${fmt(pressure(m,'final'),0)}</strong> psig</div></div><div class="field"><span class="label">REGISTROS</span><div style="padding:12px 0"><strong>${s.pairs.length}</strong> de ${s.ws.length} pozos</div></div></div></div>
 <div class="grid g4">${metric('Consumo encontrado',fmt(s.initial),'MMPCD • solo pozos comparables')}${metric('Consumo final',fmt(s.final),'MMPCD • solo pozos comparables')}${metric('Reducción neta',fmt(s.reduction),'MMPCD • signo negativo = incremento',s.reduction>0?'good':s.reduction<0?'bad':'')}${metric('Reducción porcentual',s.percent===null?'—':fmt(s.percent,2)+' %','Referencia: consumo inicial',s.reduction>0?'good':s.reduction<0?'bad':'')}</div>
 <div class="grid g-main" style="margin-top:17px"><div class="card"><div class="cardhead"><h3>Variación de consumo por pozo</h3><span class="tsmall">MMPCD • ΔQ = final − inicial</span></div>${chartHTML(s.pairs)}</div><div class="card"><h3>Consolidado de la inspección</h3><p class="hint">${s.pairs.length} pozo(s) cuantificados; ${s.missing} sin pareja completa de lecturas. Los pozos incompletos no entran en ninguno de los dos totales.</p><hr class="divide"><div class="statline"><span class="dot"></span><b>${g.arr.length}</b><span class="hint">múltiples con balance capturado</span></div><p class="hint"><b>${count}</b> múltiples y <b>${state.wells.length}</b> registros en la base cargada.</p><div class="actions" style="margin-top:20px"><button class="btn primary" data-action="go-report">Ver informe</button><button class="btn" data-action="export-json">Respaldo JSON</button></div></div></div><div class="footnote">Fuente: Herramienta de ajuste.xlsx; referencias de balances 11 y 13 de octubre de 2026 y MG BA 1-17. Los consumos se estiman y pueden variar con las propiedades del gas, geometría, calibración e instrumentos.</div>`}
