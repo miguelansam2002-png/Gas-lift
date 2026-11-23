@@ -96,6 +96,43 @@
   .report-logo{margin-top:8px}
   .report-preview{overflow:auto}
 }
+
+/* GasLift Android: ajustes de uso real en pantalla pequena */
+@media (max-width: 770px) {
+  body {font-size: 14px; }
+  .sidebar {position:sticky;top:0;z-index:20;padding:9px 9px 6px;box-shadow:0 3px 15px #102f5022}
+  .brand{padding:0 4px 8px;gap:9px}
+  .brand-logo{width:39px;height:39px;padding:3px;border-radius:10px}
+  .brand b{font-size:15px}
+  .brand small{font-size:9px}
+  .nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;overflow:visible;padding:0 0 6px}
+  .navbutton{min-width:0;width:100%;min-height:53px;margin:0;padding:7px 4px;border-radius:9px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:3px;font-size:10px;line-height:1.15;white-space:normal}
+  .navico{font-size:16px;width:auto}
+  .top{padding:12px 12px 10px;min-height:58px;flex-wrap:wrap;gap:6px}
+  .top h1{font-size:17px;line-height:1.2}
+  .top small{font-size:10px}
+  .top-right{width:100%;gap:7px;flex-wrap:wrap}
+  .top-right .pill{display:inline-flex;font-size:10px}
+  .content{padding:16px 12px 56px}
+  .subhead{display:block;margin-bottom:16px}
+  .subhead h2{font-size:20px}
+  .subhead p{font-size:12px}
+  .subhead .actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}
+  .subhead .actions .btn{width:100%;min-height:42px;white-space:normal;line-height:1.2;padding:9px 8px}
+  .card{padding:15px}
+  .formgrid,.formgrid.two{grid-template-columns:1fr}
+  .wellinputs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .wellinputs .field:first-child{grid-column:span 2}
+  .report-preview{overflow-x:auto}
+  .report-metrics{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width: 380px){
+  .navbutton{min-height:51px;font-size:9px}
+  .subhead .actions{grid-template-columns:1fr}
+  .wellinputs{grid-template-columns:1fr}
+  .wellinputs .field:first-child{grid-column:auto}
+}
+
 </style>
 </head><body>
 <div class="shell">
