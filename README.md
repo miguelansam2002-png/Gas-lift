@@ -1,25 +1,19 @@
-# GasLift NABEP — Android
+# GasLift NABEP — Aplicación Android
 
-Repositorio dedicado a la aplicación móvil de registro de ajustes y balance de consumo de gas de levantamiento.
+Repositorio público dedicado a GasLift NABEP, separado de la aplicación de gestión de pozos.
 
-## Estado
-- **Repositorio exclusivo:** GasLift NABEP, separado del sistema de gestión de pozos.
-- **Código Android:** pendiente de incorporar.
-- **APK:** pendiente de compilación.
+## Edición pública sin datos operacionales
 
-## Antes de cargar el proyecto
-**Convertir el repositorio en privado** en Settings → General → Danger Zone → Change repository visibility → Private.
+El APK se compila a partir de un proyecto **sin la base real de pozos**, por protección de la información operacional. El usuario puede añadir pozos manualmente o **importar un Excel/CSV autorizado** en su teléfono. El registro, cálculo, jornada e informe funcionan de forma local y sin internet.
 
-El proyecto original incluye registros operacionales de pozos; **no subir el ZIP mientras este repositorio sea público**.
+## Cómo generar el APK
 
-## Generar el APK
-Después de configurar el repositorio como privado:
+1. Descarga `GasLift_NABEP_Proyecto_Android_PUBLICO.zip` en el chat.
+2. En este repositorio, haz clic en **Add file → Upload files**.
+3. Sube el ZIP a la raíz **sin descomprimir** y con el mismo nombre.
+4. Confirma el cambio en la rama `main`. La compilación se inicia automáticamente.
+5. Abre [Actions](https://github.com/miguelansam2002-png/Gas-lift/actions) y consulta **Compilar GasLift NABEP APK**.
+6. Cuando finalice correctamente, descarga **GasLift-NABEP-APK** desde la ejecución.
+7. Descomprime ese artefacto e instala `app-debug.apk` en Android para pruebas.
 
-1. Descarga `GasLift_NABEP_Proyecto_Android_Offline.zip` del chat.
-2. En GitHub, selecciona **Add file → Upload files**.
-3. Sube el ZIP **sin descomprimir**, con exactamente ese nombre, en la raíz de este repositorio.
-4. En **Actions**, selecciona **Compilar GasLift NABEP APK** → **Run workflow**.
-5. Tras una compilación correcta, descarga el artefacto `GasLift-NABEP-APK` desde la ejecución.
-6. Dentro encontrarás `app-debug.apk`, destinado a pruebas en dispositivos Android.
-
-La aplicación operará sin internet después de su instalación. El APK de pruebas no sustituye una versión de publicación firmada. El informe AGA 3 sigue siendo estimativo y sujeto a validación técnica.
+**Importante:** no subas los archivos originales con pozos, presiones ni ajustes a este repositorio público. El APK para pruebas aún requiere una compilación exitosa. Los cálculos basados en AGA 3 se consideran estimaciones de ingeniería hasta su validación técnica.
