@@ -63,14 +63,14 @@ jobs:
           APK=app/build/outputs/apk/debug/app-debug.apk
           test -s "$APK"
           "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose "$APK"
-          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | grep "name='com.nabep.gaslift.testv2'"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | grep "name='com.nabep.gaslift.testv3'"
           unzip -t "$APK" >/dev/null
-          unzip -p "$APK" assets/index.html | grep -q "GasLift en campo"
+          unzip -p "$APK" assets/index.html | grep -q "bottom-tabs"
 
       - name: Publicar APK de prueba
         uses: actions/upload-artifact@v4
         with:
-          name: GasLift-NABEP-Android-V2-Instalable
+          name: GasLift-NABEP-V3-Movil
           path: app/build/outputs/apk/debug/app-debug.apk
           retention-days: 30
           if-no-files-found: error
