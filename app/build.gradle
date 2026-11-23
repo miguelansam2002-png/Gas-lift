@@ -7,11 +7,11 @@ android {
     compileSdk 35
 
     defaultConfig {
-        applicationId 'com.nabep.gaslift.testv2'
+        applicationId 'com.nabep.gaslift.testv3'
         minSdk 24
         targetSdk 34
-        versionCode 2
-        versionName '2.0-prueba'
+        versionCode 3
+        versionName '3.0.0'
     }
 
     buildTypes {
