@@ -1,4 +1,4 @@
-name: Compilar GasLift NABEP APK
+name: Compilar G NABEP APK
 
 on:
   workflow_dispatch:
@@ -40,20 +40,15 @@ jobs:
         with:
           gradle-version: '8.9'
 
-      - name: Generar icono real de NABEP desde HTML integrado
+      - name: Preparar icono elegido para G NABEP
         run: |
-          python3 - <<'PY'
-          import re,base64,pathlib
-          html=pathlib.Path('app/src/main/assets/index.html').read_text(encoding='utf-8')
-          match=re.search(r'<img[^>]*class=["\x27]brand-logo["\x27][^>]*src=["\x27]data:image/png;base64,([A-Za-z0-9+/=]+)',html)
-          if not match:
-              raise RuntimeError('No se encontro logo NABEP en la aplicacion')
-          data=base64.b64decode(match.group(1))
-          out=pathlib.Path('app/src/main/res/drawable-nodpi')
-          out.mkdir(parents=True,exist_ok=True)
-          (out/'ic_launcher.png').write_bytes(data)
-          print('Icono institucional listo:',len(data),'bytes')
-          PY
+          mkdir -p app/src/main/assets app/src/main/res/drawable-nodpi
+          base64 -d branding/g-nabep-icon.webp.b64 > app/src/main/assets/g-nabep.webp
+          cp app/src/main/assets/g-nabep.webp app/src/main/res/drawable-nodpi/ic_launcher.webp
+          rm -f app/src/main/res/drawable-nodpi/ic_launcher.png
+          test -s app/src/main/assets/g-nabep.webp
+          test -s app/src/main/res/drawable-nodpi/ic_launcher.webp
+          file app/src/main/res/drawable-nodpi/ic_launcher.webp
 
       - name: Compilar APK
         run: gradle --no-daemon :app:assembleDebug
@@ -63,14 +58,15 @@ jobs:
           APK=app/build/outputs/apk/debug/app-debug.apk
           test -s "$APK"
           "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose "$APK"
-          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | grep "name='com.nabep.gaslift.testv3'"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$APK" | grep "name='com.nabep.gnabep'"
           unzip -t "$APK" >/dev/null
-          unzip -p "$APK" assets/index.html | grep -q "bottom-tabs"
+          unzip -p "$APK" assets/index.html | grep -q "G NABEP"
+          test "$(unzip -p "$APK" assets/g-nabep.webp | wc -c)" -gt 3000
 
       - name: Publicar APK de prueba
         uses: actions/upload-artifact@v4
         with:
-          name: GasLift-NABEP-V3-Movil
+          name: G-NABEP-Android-V4
           path: app/build/outputs/apk/debug/app-debug.apk
           retention-days: 30
           if-no-files-found: error
