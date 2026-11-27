@@ -3,7 +3,7 @@
     <!-- Deliberadamente SIN permiso INTERNET. -->
     <application
         android:allowBackup="false"
-        android:label="GasLift NABEP 3"
+        android:label="G NABEP"
         android:icon="@drawable/ic_launcher"
         android:usesCleartextTraffic="false"
         android:supportsRtl="true"
