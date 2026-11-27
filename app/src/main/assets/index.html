@@ -269,6 +269,138 @@
 }
 @media(prefers-reduced-motion:reduce){.gn-splash,.gn-progress i,.home-action{animation:none!important;transition:none!important}}
 
+
+/* G NABEP V4.1 | UI polish */
+:root{--gn-navy:#0c2d4f;--gn-blue:#087fbe;--gn-cyan:#12b6d4;--gn-text:#173e5d;--gn-muted:#697f90;--gn-border:#e0eaf2;--gn-shadow:0 7px 25px rgba(12,45,79,.055)}
+.card{box-shadow:var(--gn-shadow);border:1px solid var(--gn-border)}
+.btn,.home-action,.journey-mul,.journey-well-row,.more-tile{transition:background-color .17s ease,border-color .17s ease,transform .17s ease,box-shadow .17s ease}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #10a9d9;outline-offset:2px}
+.btn:active,.journey-mul:active,.journey-well-row:active,.more-tile:active{transform:scale(.992)}
+.gn-view-label{display:inline-flex;align-items:center;gap:6px;margin:0 0 7px;color:#66859c;font-size:10px;font-weight:850;letter-spacing:1.15px;text-transform:uppercase}
+.gn-status{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(255,255,255,.28);color:#e0f8ff;border-radius:99px;padding:6px 10px;font-size:10px;font-weight:800;letter-spacing:.1px}
+.gn-status:before{content:"";width:6px;height:6px;border-radius:50%;background:#61e8bf;box-shadow:0 0 0 3px rgba(97,232,191,.14)}
+.gn-status.waiting:before{background:#ffd08c;box-shadow:0 0 0 3px rgba(255,208,140,.14)}
+.home-journal .home-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;letter-spacing:.4px;color:#cee8f4;font-weight:700;font-size:10px}
+.gn-progress-line{width:100%;height:7px;background:rgba(255,255,255,.16);border-radius:99px;overflow:hidden;margin:2px 0 7px}
+.gn-progress-line i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#4fead7,#a2f7df);transition:width .3s ease}
+.gn-progress-info{display:flex;justify-content:space-between;color:#d3eaf6;font-size:11px;margin:12px 0 8px;gap:10px}
+.gn-consumption-compare{background:#fff;border:1px solid var(--gn-border);border-radius:16px;padding:17px 16px;box-shadow:var(--gn-shadow);margin:-1px 0 15px}
+.gn-consumption-compare .gn-comparison-title{display:flex;justify-content:space-between;gap:8px;font-size:12px;font-weight:800;color:var(--gn-text);margin-bottom:15px}
+.gn-comparison-title span{font-weight:600;color:var(--gn-muted);font-size:10px}
+.gn-bar-row{display:grid;grid-template-columns:72px 1fr 56px;gap:10px;align-items:center;margin-top:13px;font-size:11px;color:#6b8296}
+.gn-bar-row strong{color:#184767;text-align:right;font-size:11px;font-variant-numeric:tabular-nums}
+.gn-bar-track{height:11px;overflow:hidden;border-radius:99px;background:#eff4f7}
+.gn-bar-track i{height:100%;display:block;border-radius:99px}
+.gn-bar-track.initial i{background:#286c9f}.gn-bar-track.final i{background:#19bbd2}
+.gn-no-balance{font-size:12px;color:#738b9d;line-height:1.45}
+.gn-section-progress{display:flex;align-items:center;gap:12px;background:#edf8fc;border:1px solid #d2e9f2;border-radius:13px;padding:12px 13px;margin-bottom:14px}
+.gn-ring{--progress:0;display:grid;place-items:center;border-radius:50%;width:51px;height:51px;flex:none;background:conic-gradient(#0ba9c9 calc(var(--progress)*1%),#d2e9ef 0)}
+.gn-ring:after{content:attr(data-progress);display:grid;place-items:center;background:#f5fcfe;width:38px;height:38px;border-radius:50%;font-size:11px;font-weight:900;color:#08769f}
+.gn-section-progress strong{display:block;font-size:13px;color:#173d5b;margin-bottom:4px}
+.gn-section-progress small{font-size:11px;line-height:1.4;color:#67849a}
+.gn-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:9px 0 17px}
+.gn-steps div{border-radius:11px;background:#f0f7fb;border:1px solid #e0eaf1;padding:10px 7px;min-width:0}
+.gn-steps b{display:inline-grid;place-items:center;width:22px;height:22px;background:#dceff7;color:#096e9e;border-radius:7px;font-size:11px}
+.gn-steps span{display:block;font-size:10px;color:#456c88;font-weight:700;line-height:1.35;margin-top:8px}
+.gn-steps .gn-step-current{background:#e4f5fa;border-color:#9fd8e7}
+.gn-card-headline{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.gn-card-headline .gn-mini-pill{display:inline-flex;border-radius:99px;background:#e6f5f1;color:#0e806c;padding:5px 8px;font-size:10px;font-weight:800}
+.gn-well-step{font-size:11px;color:#6c849a;margin:7px 0 13px}
+.gn-well-step .gn-track{height:5px;border-radius:100px;background:#e1edf2;margin-top:9px;overflow:hidden}
+.gn-well-step .gn-track i{display:block;background:#0caed0;height:100%;border-radius:99px}
+.gn-well-count{display:grid;place-items:center;background:#e5f3fa;color:#1b80af;border-radius:11px;min-width:31px;height:31px;font-size:11px;font-weight:850;margin-right:4px;flex-shrink:0}
+.journey-well-row .gn-well-count+.journey-well-row-main{flex:1}
+.gn-report-note{border:1px solid #d9eaf3;background:linear-gradient(115deg,#eef8fb,#fff);border-radius:13px;padding:13px 14px;display:flex;align-items:center;gap:11px;color:#53728c;font-size:11px;line-height:1.5;margin:0 0 14px}
+.gn-report-note strong{color:#153c5f}
+.gn-report-note .gn-report-icon{font-size:20px;color:#098bbd}
+.gn-footnote{font-size:11px;color:#7990a1;margin:12px 0}
+.gn-fine-divider{height:1px;background:#e5edf4;margin:16px 0}
+.gn-small-title{font-size:14px;font-weight:850;color:#183e5e;margin:6px 0 10px}
+.journey-well-head h2{letter-spacing:-.6px}
+.journey-well-card .journey-point,.journey-well-card .journey-readings{border-radius:13px}
+.report-preview{min-width:0}
+.report-preview .report-sheet{box-shadow:none}
+.report-preview .table-scroll{overflow-x:auto}
+@media(max-width:770px){
+ .content{max-width:650px;padding:18px 14px calc(98px + env(safe-area-inset-bottom,0px))}
+ .top{min-height:65px;padding:10px 14px}
+ .mobile-brand-copy strong{font-size:17px}
+ .bottom-tabs{padding:7px 7px calc(8px + env(safe-area-inset-bottom,0px))}
+ .bottom-tab{min-height:54px;border-radius:12px;font-size:10px}
+ .bottom-tab.active{background:#e7f5fb}
+ .home-title h2,.subhead h2{font-size:24px;letter-spacing:-.6px}
+ .home-title p,.subhead p{font-size:12px;line-height:1.5}
+ .home-journal{padding:19px 17px;border-radius:19px}
+ .home-journal .home-jname{font-size:20px}
+ .home-journal .home-stats>div{padding:13px 9px;border-radius:11px}
+ .home-journal .home-stats b{font-size:25px}
+ .home-actions{gap:9px}
+ .home-actions .home-action{min-height:91px;gap:8px;border-radius:15px;box-shadow:0 5px 14px rgba(12,45,79,.045)}
+ .home-actions .home-action:first-child{min-height:65px}
+ .home-kpi{border-radius:15px;min-height:105px;padding:15px 14px}
+ .home-kpi strong{font-size:24px}
+ .card{padding:16px;border-radius:15px;margin-bottom:13px}
+ .formgrid.two{grid-template-columns:1fr}
+ .journey-info{background:#fff}
+ .journey-info .formgrid.two{grid-template-columns:1fr 1fr;gap:12px}
+ .journey-info .formgrid.two>.field:first-child,.journey-info .formgrid.two>.field:last-child{grid-column:span 2}
+ .journey-info .formgrid.two>.field .label{font-size:10px}
+ .journey-metrics{margin:10px 0 14px;gap:8px}
+ .journey-metric{padding:14px 9px;border-radius:13px}
+ .journey-metric strong{font-size:24px}
+ .journey-mul{border:1px solid #e1eaf2;border-radius:12px;padding:15px 12px;margin-bottom:8px;min-height:74px;background:#fff}
+ .journey-mul-main strong{font-size:14px}
+ .journey-mul-main small,.journey-mul-right small{font-size:10px}
+ .journey-tag,.journey-well-status{font-size:10px;line-height:1.3}
+ .journey-add{background:#f5f9fc;border:1px dashed #c4dce9;border-radius:13px;padding:13px;gap:9px}
+ .journey-add .btn{width:100%;min-height:46px}
+ .journey-actions{display:grid;grid-template-columns:1fr;gap:9px}
+ .journey-actions .btn{width:100%;min-height:48px}
+ .journey-well-card{padding:17px;border-radius:17px}
+ .journey-well-head{align-items:flex-start;gap:9px}
+ .journey-well-head h2{font-size:26px;line-height:1.1}
+ .journey-readings{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .journey-readings .field{min-width:0}
+ .journey-readings input{font-size:22px;font-weight:800;letter-spacing:-.5px;color:#123e61;background:#fff}
+ .journey-point input{font-weight:700}
+ .journey-result{border-radius:13px}
+ .journey-step-actions{display:grid;grid-template-columns:1fr 1.5fr;gap:8px}
+ .journey-step-actions .btn{min-width:0;width:100%;white-space:normal;min-height:51px;padding:10px 9px}
+ .journey-well-row{padding:13px 11px;border-radius:12px;min-height:61px;align-items:center}
+ .journey-well-row strong{font-size:14px}
+ .journey-well-row small{font-size:10px}
+ .mode-grid{gap:9px}
+ .mode-choice{padding:13px 12px;border-radius:12px;min-height:86px}
+ .mode-choice b{font-size:12px}
+ .mode-choice small{line-height:1.4;font-size:11px}
+ .quick-area{min-height:170px;line-height:1.5;font-size:14px}
+ .quick-area::placeholder{color:#8299aa}
+ .alert.info{padding:13px 12px;font-size:11px;line-height:1.55}
+ .report-preview{padding:10px;overflow:auto;border-radius:13px}
+ .report-preview .report-sheet{width:100%;min-width:0;padding:13px 9px}
+ .report-preview .report-page{min-width:0}
+ .report-preview .data-table{font-size:10px}
+ .report-preview .data-table th,.report-preview .data-table td{padding:7px 5px}
+ .report-metrics{gap:6px}
+ .report-metrics strong{font-size:14px}
+ .more-tile{border-radius:14px;min-height:76px}
+ .gn-about{border-radius:15px}
+ .gn-well-step{margin-top:0}
+ .gn-steps{gap:5px}
+}
+@media(max-width:380px){
+ .journey-info .formgrid.two{grid-template-columns:1fr}
+ .journey-info .formgrid.two>.field:first-child,.journey-info .formgrid.two>.field:last-child{grid-column:auto}
+ .gn-bar-row{grid-template-columns:58px 1fr 48px;gap:7px;font-size:10px}
+ .journey-readings{grid-template-columns:1fr}
+ .journey-step-actions{grid-template-columns:1fr}
+ .gn-steps span{font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){.btn,.journey-mul,.journey-well-row,.more-tile,.gn-progress-line i{transition:none}}
+@media print{
+ .gn-report-note,.gn-section-progress,.gn-view-label,.gn-steps,.gn-well-step,.gn-consumption-compare{display:none!important}
+}
+
 </style>
 </head><body>
 <div class="gn-splash" id="gnSplash" aria-label="Iniciando G NABEP"><div class="gn-splash-content"><span class="gn-splash-corp">NORTH AMERICAN BLUE ENERGY PARTNERS</span><img src="g-nabep.webp" alt="G NABEP"><h1>G NABEP</h1><p>Gestión operacional de gas lift</p><div class="gn-progress"><i></i></div><small>BACHAQUERO LAGO</small></div></div>
@@ -369,7 +501,7 @@ function dashboard(){
  const hasReadings=sums.length>0;
  const label=j?.name||'Jornada en curso';
  const p=mulObj(m);
- return `<div class="home-title"><span class="home-eyebrow">G NABEP · BACHAQUERO LAGO</span><h2>Panel de campo</h2><p>${esc(state.date||today())} · Mediciones guardadas en este dispositivo</p></div>
+ return `<div class="home-title"><span class="home-eyebrow">G NABEP · BACHAQUERO LAGO</span><h2>Mi jornada</h2><p>${esc(state.date||today())} · Mediciones guardadas en este dispositivo</p></div>
  <section class="card home-journal">
  <div class="home-meta">JORNADA ACTIVA</div><div class="home-jname">${esc(label)}</div>
  <div class="home-stats"><div><b>${muls.length}</b><small>Múltiples</small></div><div><b>${ws.length}</b><small>Pozos</small></div><div><b>${complete.length}</b><small>Completos</small></div></div>
@@ -540,17 +672,90 @@ function genReport(){if(state.reportScope==='visit'){let check=quickReportStatus
  let pages=entries.map((x,i)=>{let p=mulObj(x.m);let notes=x.pairs.map(r=>r.w.note?`${r.w.name}: ${r.w.note}`:'').filter(Boolean);if(state.reportScope==='visit'){let more=(state.visitPlan[x.m]||[]).map(id=>state.visitAnnotations[id]&&state.wells.find(w=>w.id===id)?`${state.wells.find(w=>w.id===id).name}: ${state.visitAnnotations[id]}`:null).filter(Boolean);notes.push(...more);}if(p.notes)notes.unshift(p.notes);let warningFlags=[...new Set(x.pairs.flatMap(r=>r.flags))];return `<section class="report-page report-sheet">${rptHead('Detalle operacional | MG '+x.m,`Bachaquero Lago | ${state.date} | Inspección: ${p.time||'N/D'} | ${x.pairs.length} pozos cuantificados`)}<div class="report-metrics">${reportMetric('PRESIÓN INICIAL',fmt(pressure(x.m,'initial'),0),'psig')}${reportMetric('PRESIÓN FINAL',fmt(pressure(x.m,'final'),0),'psig')}${reportMetric('VARIACIÓN DE PRESIÓN',valid(pressure(x.m,'initial'))&&valid(pressure(x.m,'final'))?signed(pressure(x.m,'final')-pressure(x.m,'initial'),0):'N/D','psi')}</div><div class="report-metrics" style="margin-top:3px">${reportMetric('GAS ENCONTRADO',x.pairs.length?fmt(x.initial):'N/D','MMPCD')}${reportMetric('GAS FINAL',x.pairs.length?fmt(x.final):'N/D','MMPCD')}${reportMetric('VARIACIÓN DE GAS',x.pairs.length?signed(x.final-x.initial):'N/D','MMPCD')}</div><div class="report-sub">Punto de gas, lecturas y consumo por pozo</div>${x.pairs.length?reportTable(x):`<div class="alert info">Sin lecturas comparables: no se asigna consumo cero a este múltiple.</div>`}<div class="report-sub">Variación de consumo por pozo (MMPCD)</div>${chartHTML(x.pairs)}<div class="report-sub">Observaciones operacionales</div><div class="report-notes">${notes.length?esc(notes.join('\n')):'Sin observaciones registradas.'}</div>${warningFlags.length?`<div class="report-notes" style="margin-top:9px;color:#995d29">Validaciones pendientes: ${esc(warningFlags.join(' · '))}</div>`:''}<div class="report-footer">Método: ${state.params.method==='aga'?'placa de orificio (AGA 3 / RG, cálculo de ingeniería)':'operacional histórico, no AGA 3'} · Resultados estimados, no fiscales. Presión estática asumida aguas arriba de cada placa. ${i+2}/${entries.length+1}</div></section>`}).join('');
  return cover+pages;
 }
-function report(){let scope=state.reportScope,scopeMuls=scope==='visit'?Object.keys(state.visitPlan).filter(m=>state.visitPlan[m]?.length):scope==='current'?[state.selected]:measuredMultiples(),scopeRows=scopeMuls.map(m=>summary(m,scope==='visit'?'visit':'all')),gs={wellCount:scopeRows.reduce((n,s)=>n+s.pairs.length,0),arr:scopeRows.filter(s=>s.pairs.length)};return `<div class="subhead"><div><h2>Informe de balance de gas</h2><p>Genera un documento imprimible con resumen ejecutivo y detalle por múltiple, similar a los reportes de referencia.</p></div><div class="actions"><button class="btn" data-action="export-csv">Exportar datos CSV</button><button class="btn" data-action="wa-generate">✉ Mensaje WhatsApp</button><button class="btn primary" data-action="print">Imprimir / Guardar PDF</button></div></div><div class="card"><div class="formgrid two"><label class="field"><span class="label">ALCANCE DEL INFORME</span><select id="reportScope"><option value="all" ${scope==='all'?'selected':''}>Todos los múltiples con mediciones (jornada abierta)</option><option value="current" ${scope==='current'?'selected':''}>Solo MG ${esc(state.selected)}</option><option value="visit" ${scope==='visit'?'selected':''}>Jornada actual (todos los múltiples)</option></select></label>${field('TÍTULO DEL INFORME','reportName',state.reportName,{type:'text'})}</div><p class="hint" style="margin-bottom:0">${gs.wellCount} pozos cuantificados en ${gs.arr.length} múltiples. Usa “Imprimir / Guardar PDF” y selecciona “Guardar como PDF” en el teléfono o la computadora.</p></div><div class="card report-preview" id="previewReport">${genReport()}</div>${whatsAppPanel()}${banner()}`}
+function report(){let scope=state.reportScope,scopeMuls=scope==='visit'?Object.keys(state.visitPlan).filter(m=>state.visitPlan[m]?.length):scope==='current'?[state.selected]:measuredMultiples(),scopeRows=scopeMuls.map(m=>summary(m,scope==='visit'?'visit':'all')),gs={wellCount:scopeRows.reduce((n,s)=>n+s.pairs.length,0),arr:scopeRows.filter(s=>s.pairs.length)};return `<div class="subhead"><div><h2>Informe operacional</h2><p>Genera un documento imprimible con resumen ejecutivo y detalle por múltiple, similar a los reportes de referencia.</p></div><div class="actions"><button class="btn" data-action="export-csv">Exportar datos CSV</button><button class="btn" data-action="wa-generate">✉ Mensaje WhatsApp</button><button class="btn primary" data-action="print">Imprimir / Guardar PDF</button></div></div><div class="card"><div class="formgrid two"><label class="field"><span class="label">ALCANCE DEL INFORME</span><select id="reportScope"><option value="all" ${scope==='all'?'selected':''}>Todos los múltiples con mediciones (jornada abierta)</option><option value="current" ${scope==='current'?'selected':''}>Solo MG ${esc(state.selected)}</option><option value="visit" ${scope==='visit'?'selected':''}>Jornada actual (todos los múltiples)</option></select></label>${field('TÍTULO DEL INFORME','reportName',state.reportName,{type:'text'})}</div><p class="hint" style="margin-bottom:0">${gs.wellCount} pozos cuantificados en ${gs.arr.length} múltiples. Usa “Imprimir / Guardar PDF” y selecciona “Guardar como PDF” en el teléfono o la computadora.</p></div><div class="card report-preview" id="previewReport">${genReport()}</div>${whatsAppPanel()}${banner()}`}
 function moreView(){
- return `<div class="more-head"><span class="home-eyebrow">CONFIGURACIÓN Y HERRAMIENTAS</span><h2>Más opciones</h2><p>Consulta la base, ajusta los parámetros y guarda una copia de tus jornadas.</p></div>
+ return `<div class="more-head"><span class="home-eyebrow">CONFIGURACIÓN Y HERRAMIENTAS</span><h2>Centro de herramientas</h2><p>Consulta la base, ajusta los parámetros y guarda una copia de tus jornadas.</p></div>
  <button type="button" class="more-tile" data-view="base"><span class="more-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 3h6M8 10h8M8 14h8M8 18h5"/></svg></span><span class="more-copy"><b>Base de pozos</b><small>Buscar pozos, consultar condiciones y editar registros</small></span><span class="more-chevron">›</span></button>
  <button type="button" class="more-tile" data-view="settings"><span class="more-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="19" cy="12" r="1.2"/></svg></span><span class="more-copy"><b>Parámetros de cálculo</b><small>AGA 3, geometría, gas y referencias de medición</small></span><span class="more-chevron">›</span></button>
  <button type="button" class="more-tile" data-action="export-json"><span class="more-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6zM15 3v5h4M9 16l2-3 2 2 3-4"/></svg></span><span class="more-copy"><b>Guardar respaldo</b><small>Exporta todas las jornadas y lecturas a un archivo JSON</small></span><span class="more-chevron">›</span></button>
  <button type="button" class="more-tile" data-action="help-usage"><span class="more-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="15" rx="3"/><path d="M8 22l4-3h6M7 9h10M7 13h7"/></svg></span><span class="more-copy"><b>Ayuda rápida</b><small>Pasos básicos para registrar y generar el balance</small></span><span class="more-chevron">›</span></button>
  <div class="gn-about"><img src="g-nabep.webp" alt="G NABEP"><div><strong>G NABEP</strong><small>Gestión operacional de gas lift</small><span>Herramienta NABEP · Bachaquero Lago · Sin conexión</span></div></div>
-<div class="more-footer">G NABEP · Versión 4.0 · Uso operacional</div>`;
+<div class="more-footer">G NABEP · Versión 4.1 · Uso operacional</div>`;
 }
-function render(){const cc=document.getElementById('content');if(!cc)return;document.querySelectorAll('.navbutton,.bottom-tab').forEach(b=>{const v=b.dataset.view;const active=v===state.view||(v==='more'&&(state.view==='more'||state.view==='base'||state.view==='settings'));b.classList.toggle('active',active);if(b.classList.contains('bottom-tab'))b.setAttribute('aria-current',active?'page':'false')});document.getElementById('methodPill').textContent=state.params.method==='aga'?'AGA 3 · estimado':'Histórico · referencia';cc.innerHTML=state.view==='dashboard'?dashboard():state.view==='capture'?capture():state.view==='quick'?quickView():state.view==='base'?base():state.view==='settings'?settings():state.view==='more'?moreView():report();}
+
+function decorateView(cc){
+ const view=state.view;
+ if(view==='dashboard'){
+   const j=currentJournal(),ms=journalMuls(),ws=ms.flatMap(plannedWells),done=ws.filter(isComputedVisit).length;
+   const percent=ws.length?Math.round(done/ws.length*100):0;
+   const hero=cc.querySelector('.home-journal');
+   if(hero){
+     const meta=hero.querySelector('.home-meta');
+     if(meta)meta.innerHTML='<span>JORNADA ACTIVA</span><span class="gn-status '+(ws.length===0?'waiting':'')+'">'+(ws.length===0?'Sin lecturas':done===ws.length?'Completada':'En progreso')+'</span>';
+     const button=hero.querySelector('button[data-action="go-capture"]');
+     if(button)button.insertAdjacentHTML('beforebegin','<div class="gn-progress-info"><span>Avance de captura</span><b>'+done+' de '+ws.length+' pozos</b></div><div class="gn-progress-line" role="progressbar" aria-label="Pozos con cálculo completo" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+percent+'"><i style="width:'+percent+'%"></i></div>');
+   }
+   const kpis=cc.querySelector('.home-kpis');
+   if(kpis){
+     let xs=ws.filter(isComputedVisit).map(calcWell).filter(Boolean),qi=xs.reduce((n,x)=>n+x.initial,0),qf=xs.reduce((n,x)=>n+x.final,0);
+     const fmtBar=v=>Math.min(100,Math.max(0,(v/(Math.max(qi,qf,0.00001)))*100));
+     const bar=xs.length?'<div class="gn-comparison-title">Comparación de consumo <span>MMPCD · estimado</span></div><div class="gn-bar-row"><span>Encontrado</span><div class="gn-bar-track initial"><i style="width:'+fmtBar(qi)+'%"></i></div><strong>'+fmt(qi)+'</strong></div><div class="gn-bar-row"><span>Final</span><div class="gn-bar-track final"><i style="width:'+fmtBar(qf)+'%"></i></div><strong>'+fmt(qf)+'</strong></div>':'<div class="gn-comparison-title">Comparación de consumo <span>MMPCD</span></div><div class="gn-no-balance">Registra las presiones y lecturas de los pozos para visualizar aquí el balance de la jornada.</div>';
+     kpis.insertAdjacentHTML('afterend','<div class="gn-consumption-compare">'+bar+'</div>');
+   }
+   return;
+ }
+ if(view==='capture'){
+   if(ui.journeyScreen==='overview'){
+     const ms=journalMuls(),wells=ms.flatMap(plannedWells),done=wells.filter(isComputedVisit).length;
+     const percent=wells.length?Math.round(done/wells.length*100):0;
+     const info=cc.querySelector('.journey-info');
+     if(info){
+       const summary='<div class="gn-section-progress"><div class="gn-ring" data-progress="'+percent+'%" style="--progress:'+percent+'"></div><div><strong>Avance de la jornada</strong><small>'+done+' de '+wells.length+' pozos cuantificados · '+ms.length+' múltiples registrados</small></div></div>';
+       info.insertAdjacentHTML('beforebegin',summary);
+     }
+     cc.querySelectorAll('.journey-mul').forEach(b=>b.setAttribute('aria-label',b.textContent.replace(/\s+/g,' ').trim()));
+   }else if(ui.journeyScreen==='multiple'){
+     const ws=plannedWells(state.selected),done=ws.filter(isComputedVisit).length;
+     const card=cc.querySelector('.journey-well-list');
+     if(card){
+       card.querySelectorAll('button.journey-well-row').forEach((b,i)=>{
+         b.insertAdjacentHTML('afterbegin','<span class="gn-well-count">'+(i+1)+'</span>');
+       });
+     }
+     const sub=cc.querySelector('.subhead');
+     if(sub)sub.insertAdjacentHTML('afterend','<div class="gn-section-progress"><div class="gn-ring" data-progress="'+(ws.length?Math.round(done/ws.length*100):0)+'%" style="--progress:'+(ws.length?Math.round(done/ws.length*100):0)+'"></div><div><strong>MG '+esc(state.selected)+' · seguimiento</strong><small>'+done+' de '+ws.length+' pozos cuantificados. Completa las presiones antes del informe.</small></div></div>');
+   }else if(ui.journeyScreen==='well'){
+     const w=state.wells.find(x=>x.id===ui.journeyWell);
+     if(w){
+       const ws=plannedWells(w.multiple),i=Math.max(0,ws.findIndex(x=>x.id===w.id)),pct=ws.length?Math.round((i+1)/ws.length*100):0;
+       const card=cc.querySelector('.journey-well-card');
+       if(card)card.insertAdjacentHTML('beforebegin','<div class="gn-well-step"><strong>Ficha de medición · pozo '+(i+1)+' de '+ws.length+'</strong><div class="gn-track"><i style="width:'+pct+'%"></i></div></div>');
+     }
+   }
+   return;
+ }
+ if(view==='quick'){
+   const first=cc.querySelector('.card');
+   const guide='<div class="gn-steps" aria-label="Proceso de importación"><div class="gn-step-current"><b>1</b><span>Pegar mensaje</span></div><div><b>2</b><span>Revisar vista previa</span></div><div><b>3</b><span>Aplicar a jornada</span></div></div>';
+   if(first){const h=first.querySelector('h3');if(h)h.insertAdjacentHTML('beforebegin',guide)}
+   return;
+ }
+ if(view==='report'){
+   const card=cc.querySelector('.report-preview');
+   if(card)card.insertAdjacentHTML('beforebegin','<div class="gn-report-note"><span class="gn-report-icon">▤</span><span><strong>Vista previa del balance.</strong> Comprueba los múltiples y presiones antes de guardar el PDF. El informe conserva los parámetros técnicos de cálculo.</span></div>');
+   return;
+ }
+ if(view==='base'){
+   const sub=cc.querySelector('.subhead');if(sub)sub.insertAdjacentHTML('beforebegin','<div class="gn-view-label">CATÁLOGO DE MEDICIÓN</div>');
+   return;
+ }
+ if(view==='settings'){
+   const sub=cc.querySelector('.subhead');if(sub)sub.insertAdjacentHTML('beforebegin','<div class="gn-view-label">CONFIGURACIÓN TÉCNICA</div>');
+   return;
+ }
+}
+
+function render(){const cc=document.getElementById('content');if(!cc)return;document.querySelectorAll('.navbutton,.bottom-tab').forEach(b=>{const v=b.dataset.view;const active=v===state.view||(v==='more'&&(state.view==='more'||state.view==='base'||state.view==='settings'));b.classList.toggle('active',active);if(b.classList.contains('bottom-tab'))b.setAttribute('aria-current',active?'page':'false')});document.getElementById('methodPill').textContent=state.params.method==='aga'?'AGA 3 · estimado':'Histórico · referencia';cc.innerHTML=state.view==='dashboard'?dashboard():state.view==='capture'?capture():state.view==='quick'?quickView():state.view==='base'?base():state.view==='settings'?settings():state.view==='more'?moreView():report();decorateView(cc);}
 function downloadFile(name,content,type){let blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),5000)}
 function csvCell(v){let t=String(v===undefined||v===null?'':v);return /[";\n\r]/.test(t)?'"'+t.replace(/"/g,'""')+'"':t}
 function exportCsv(){let rows=[['Pozo','Estacion','Multiple','Estado','Metodo','Punto H2O','Encontrado H2O','Final H2O','P inicial psig','P final psig','Q inicial MMPCD','Q final MMPCD','Delta Q MMPCD','Reduccion %','Observaciones','Placa pulgadas','Tuberia ID pulgadas','Incluido','Origen']];for(let w of state.wells){let x=calcWell(w),p=mulObj(w.multiple);rows.push([w.name,w.station,w.multiple,w.status,w.method,w.point,w.initial,w.final,p.p1,p.p2,x?.initial,x?.final,x?.delta,x?.percent,w.note,w.d,w.D,w.include,w.source])}let content='\ufeff'+rows.map(r=>r.map(csvCell).join(';')).join('\r\n');downloadFile('NABEP_Balance_Gas_'+today()+'.csv',content,'text/csv;charset=utf-8')}
@@ -954,7 +1159,7 @@ function finishQuickReport(){
 function quickView(){
  const selectedMul=ui.quickMultiple||state.selected;
  const count=Object.values(state.visitPlan||{}).reduce((a,x)=>a+x.length,0);
- return `<div class="subhead"><div><h2>Carga rápida de pozos</h2><p>Pega un mensaje de WhatsApp con múltiples y ajustes, o una lista de pozos para realizar las mediciones. Primero se revisa, después se aplica.</p></div><div class="actions"><button class="btn" data-action="quick-example">Cargar mensaje de ejemplo</button><button class="btn" data-action="quick-clear">Limpiar</button></div></div>
+ return `<div class="subhead"><div><h2>Carga rápida</h2><p>Pega un mensaje de WhatsApp con múltiples y ajustes, o una lista de pozos para realizar las mediciones. Primero se revisa, después se aplica.</p></div><div class="actions"><button class="btn" data-action="quick-example">Cargar mensaje de ejemplo</button><button class="btn" data-action="quick-clear">Limpiar</button></div></div>
  <div class="card"><h3>1. Selecciona el tipo de texto</h3><div class="mode-grid"><label class="mode-choice"><input type="radio" name="qmode" id="quickModeMessage" value="message" ${ui.quickMode==='message'?'checked':''}><span><b>Mensaje completo de WhatsApp</b><small>Reconoce informes por bloques o en una línea, puntos de gas, lecturas, presiones, horas y observaciones.</small></span></label><label class="mode-choice"><input type="radio" name="qmode" id="quickModeList" value="list" ${ui.quickMode==='list'?'checked':''}><span><b>Solo lista de pozos</b><small>Escoge un múltiple y pega los códigos. Quedarán listos para llenar a mano.</small></span></label></div>
  <div class="grid g2" style="margin-top:17px"><label class="field"><span class="label">MÚLTIPLE PARA LISTAS SIN ENCABEZADO</span>${multipleSelect('quickMultiple',selectedMul)}</label><div><span class="label">REGISTROS EN LA ÚLTIMA LISTA DE VISITA</span><p style="font-size:20px;margin:7px 0;color:#194467;font-weight:800">${count}</p></div></div>
  <label class="field" style="display:block;margin-top:14px"><span class="label">PEGA AQUÍ EL TEXTO</span><textarea class="quick-area" id="quickText" placeholder="${ui.quickMode==='list'?'BA 2599, BA 754, BA 1287':'✓ Ajuste realizado:&#10;MG 1-02&#10;✓BA 2599 SE ENCONTRO EN 191 SE DEJO EN 98'}">${esc(ui.quickText)}</textarea><small>Admite varias redacciones, bloques de varias líneas, H²O, caracteres invisibles de WhatsApp, horarios, presiones, estados y notas. Los códigos similares no se sustituyen automáticamente.</small></label>
